@@ -9,12 +9,13 @@ CREATE TABLE IF NOT EXISTS activitats_raw (
     durada_minuts INT NOT NULL,
     tipus_activitat VARCHAR(50) NOT NULL,
     calories INT NOT NULL,
-    dispositiu VARCHAR(50) NOT NULL,
+    dispositiu VARCHAR(20) NOT NULL,
     PRIMARY KEY (id_activitat)
 );
 
-LOAD DATA INFILE 'C:\Users\Xavier Fornes Bort\Documents\GitHub\practicaBBDDLSFitWell'
+LOAD DATA INFILE 'C:/Users/Xavier Fornes Bort/Documents/GitHub/practicaBBDDLSFitWell/activitats_punticoma.csv'
 INTO TABLE activitats_raw
 FIELDS TERMINATED BY ';'
 Lines TERMINATED BY '\n'
-IGNORE 1 LINES;
+IGNORE 1 LINES
+(id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu);  
