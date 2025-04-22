@@ -16,7 +16,7 @@ CREATE TABLE activitats_net (
 
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS mover()$$
+DROP PROCEDURE IF EXISTS mover$$
 CREATE PROCEDURE mover()
 BEGIN    
     INSERT INTO activitats_net (
@@ -27,7 +27,8 @@ BEGIN
             WHEN DAYOFWEEK(data_activitat) IN (1, 7) THEN TRUE
             ELSE FALSE
         END AS fin_de_semana
-    FROM activitats_raw;
+    FROM activitats_raw
+        WHERE DATE(data_activitat) = CURDATE() - INTERVAL 1 DAY;
 END $$
 
 DELIMITER ;

@@ -18,14 +18,15 @@ DROP PROCEDURE IF EXISTS mover$$
 CREATE PROCEDURE mover()
 BEGIN    
     INSERT INTO activitats_net (
-        id_activitat, id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu, fin_de_semana
+        id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu, fin_de_semana
     )
-    SELECT id_activitat, id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu,
+    SELECT id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu,
         CASE 
             WHEN DAYOFWEEK(data_activitat) IN (1, 7) THEN TRUE
             ELSE FALSE
         END AS fin_de_semana
-    FROM activitats_raw;
+    FROM activitats_raw
+        WHERE DATE(data_activitat) = CURDATE() - INTERVAL 1 DAY;
 END $$
 
 DELIMITER ;
