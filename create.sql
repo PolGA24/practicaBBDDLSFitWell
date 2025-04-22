@@ -1,3 +1,4 @@
+/*Pas 1*/
 CREATE DATABASE IF NOT EXISTS lsfitwell;
 USE lsfitwell;
 
@@ -19,3 +20,8 @@ FIELDS TERMINATED BY ';'
 Lines TERMINATED BY '\n'
 IGNORE 1 LINES
 (id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu);  
+
+/*Pas 2*/
+CREATE TABLE IF NOT EXISTS activitats_net (
+    es_capDeSetmana BOOLEAN
+)
