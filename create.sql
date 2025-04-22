@@ -12,3 +12,9 @@ CREATE TABLE IF NOT EXISTS activitats_raw (
     dispositiu VARCHAR(50) NOT NULL,
     PRIMARY KEY (id_activitat),
 )
+
+LOAD DATA INFILE '/path/to/activitats.csv'
+INTO TABLE activitats_raw
+FIELDS TERMINATED BY ';'
+Lines TERMINATED BY '\n'
+IGNORE 1 LINES
