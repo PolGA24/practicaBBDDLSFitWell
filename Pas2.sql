@@ -13,7 +13,6 @@ CREATE TABLE IF NOT EXISTS activitats_net (
 );
 
 DELIMITER $$
-
 DROP PROCEDURE IF EXISTS mover$$
 CREATE PROCEDURE mover()
 BEGIN    
@@ -28,5 +27,14 @@ BEGIN
     FROM activitats_raw
         WHERE DATE(data_activitat) = CURDATE() - INTERVAL 1 DAY;
 END $$
+DELIMITER ;
 
+
+DELIMITER $$
+DROP EVENT IF EXISTS activitat_moved$$
+CREATE EVENT activitat_moved
+ON SCHEDULE EVERY 1 DAY STARTS '2024-10-01 00:00:00' DO
+BEGIN
+    CALL mover();
+END $$
 DELIMITER ;
