@@ -14,7 +14,7 @@ CREATE TABLE activitats_net (
 
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS mover()$$
+DROP PROCEDURE IF EXISTS mover$$
 CREATE PROCEDURE mover()
 BEGIN    
     INSERT INTO activitats_net (
