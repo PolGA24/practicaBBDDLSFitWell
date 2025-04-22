@@ -1,0 +1,2 @@
+CREATE DATABASE IF NOT EXISTS lsfitwell;
+USE lsfitwell;
