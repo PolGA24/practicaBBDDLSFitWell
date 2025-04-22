@@ -1,5 +1,5 @@
 /*Pas 2*/
-CREATE TABLE activitats_net (
+CREATE TABLE IF NOT EXISTS activitats_net (
     id_activitat INT NOT NULL,
     id_usuari INT NOT NULL,
     data_activitat DATE NOT NULL,

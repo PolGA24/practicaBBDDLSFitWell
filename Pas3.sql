@@ -1,7 +1,7 @@
 /*Pas 3*/
 
 /*MODIFICAR CONTINGUT*/
-CREATE TABLE activitats_net (
+CREATE TABLE IF NOT EXISTS activitats_net (
     id_activitat INT NOT NULL AUTO_INCREMENT,
     id_usuari INT NOT NULL,
     data_activitat DATE NOT NULL,
