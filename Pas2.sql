@@ -1,6 +1,6 @@
 /*Pas 2*/
 CREATE TABLE activitats_net (
-    id_activitat INT NOT NULL AUTO_INCREMENT,
+    id_activitat INT NOT NULL,
     id_usuari INT NOT NULL,
     data_activitat DATE NOT NULL,
     hora_inici TIME NOT NULL,
@@ -18,9 +18,9 @@ DROP PROCEDURE IF EXISTS mover$$
 CREATE PROCEDURE mover()
 BEGIN    
     INSERT INTO activitats_net (
-        id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu, fin_de_semana
+        id_activitat, id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu, fin_de_semana
     )
-    SELECT id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu,
+    SELECT id_activitat, id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu,
         CASE 
             WHEN DAYOFWEEK(data_activitat) IN (1, 7) THEN TRUE
             ELSE FALSE
