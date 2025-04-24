@@ -2,6 +2,7 @@
 CREATE TABLE IF NOT EXISTS MD_activitat (
     id INT NOT NULL AUTO_INCREMENT,
     nom VARCHAR(50),
-    descripcio VARCHAR(500)
+    descripcio VARCHAR(500),
+    FOREIGN KEY (id) REFERENCES activitats_net(id_activitat)
 
 );
