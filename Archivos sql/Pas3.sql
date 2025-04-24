@@ -48,7 +48,7 @@ DROP PROCEDURE IF EXISTS exportar_control_carregues$$
 CREATE PROCEDURE exportar_control_carregues()
 BEGIN
     SELECT * 
-    INTO OUTFILE '/ruta/on/guardar/control_carregues.csv'
+    INTO OUTFILE 'C:/Users/Xavier Fornes Bort/Documents/GitHub/practicaBBDDLSFitWell/Archivos cvs/control_carregues.csv'
     FIELDS TERMINATED BY ';'
     ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
