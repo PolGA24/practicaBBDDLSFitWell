@@ -1,4 +1,5 @@
 /*Pas 4*/
+/*Creació taula MD_activitat*/
 CREATE TABLE IF NOT EXISTS MD_activitat (
     id INT NOT NULL AUTO_INCREMENT,
     id_activitat INT NOT NULL,
