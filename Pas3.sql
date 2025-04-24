@@ -45,7 +45,7 @@ DELIMITER $$
 CREATE PROCEDURE exportar_control_carregues()
 BEGIN
     SELECT * 
-    INTO OUTFILE '/ruta/on/guardar/control_carregues.csv'
+    INTO OUTFILE 'C:/xampp/mysql/data/control_carregues.csv'
     FIELDS TERMINATED BY ';'
     ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
