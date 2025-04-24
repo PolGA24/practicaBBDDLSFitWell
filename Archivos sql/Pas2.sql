@@ -1,3 +1,5 @@
+/*Pas 2*/
+
 /* CREACION DE TABLA activitats_net */
 CREATE TABLE IF NOT EXISTS activitats_net (
     id_activitat INT NOT NULL,
