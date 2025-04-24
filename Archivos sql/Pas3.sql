@@ -39,13 +39,12 @@ END $$
 DELIMITER ;
 
 /* Procedure per exportar la taula control_carregues a CSV */
-
 DELIMITER $$
 
 CREATE PROCEDURE exportar_control_carregues()
 BEGIN
     SELECT * 
-    INTO OUTFILE 'C:/xampp/mysql/data/control_carregues.csv'
+    INTO OUTFILE 'C:/Users/Xavier Fornes Bort/Documents/GitHub/practicaBBDDLSFitWell/Archivos cvs/control_carregues.csv'
     FIELDS TERMINATED BY ';'
     ENCLOSED BY '"'
     LINES TERMINATED BY '\n'
