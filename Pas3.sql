@@ -1,34 +1,55 @@
 /*Pas 3*/
 
-/*MODIFICAR CONTINGUT*/
-CREATE TABLE IF NOT EXISTS activitats_net (
-    id_activitat INT NOT NULL AUTO_INCREMENT,
-    id_usuari INT NOT NULL,
-    data_activitat DATE NOT NULL,
-    hora_inici TIME NOT NULL,
-    durada_minuts INT NOT NULL,
-    tipus_activitat VARCHAR(50) NOT NULL,
-    calories INT NOT NULL,
-    dispositiu VARCHAR(20) NOT NULL,
-    fin_de_semana BOOLEAN NOT NULL,
-    PRIMARY KEY (id_activitat)
+/* Creació de la taula */
+CREATE TABLE control_carguas (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre_fichero VARCHAR(255) NOT NULL,
+    archivos_introducidos INT NOT NULL,
+    data_carga DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+/* Modificar el procedure de càrrega */
+DELIMITER $$
+
+CREATE PROCEDURE cargar_actividades_net(nombre_fichero VARCHAR(255))
+BEGIN
+    DECLARE num_files INT;
+
+    -- Inserim les dades a activitats_net
+    INSERT INTO actividades_net (
+        id_usuario, data_actividades, hora_inicio, duracion_minutos,
+        tipos_actividades, calorias, dispositivos, fin_de_semana
+    )
+    SELECT id_usuario, data_actividades, hora_inicio, duracion_minutos,
+            tipos_actividades, calorias, dispositivos,
+            CASE 
+                WHEN DAYOFWEEK(fechaa_actividad) IN (1, 7) THEN TRUE
+                ELSE FALSE
+            END AS fin_de_semana
+    FROM activitats_raw;
+
+    -- Comptem les files afegides
+    SET num_files = ROW_COUNT();
+
+    -- Inserim el registre a la taula de control
+    INSERT INTO control_cargas (nombre_ficher, archivos_introducidos)
+    VALUES (nombre_archivos, num_files);
+END $$
+
+DELIMITER ;
+
+/* Procedure per exportar la taula control_carregues a CSV */
 
 DELIMITER $$
 
-DROP PROCEDURE IF EXISTS mover$$
-CREATE PROCEDURE mover()
-BEGIN    
-    INSERT INTO activitats_net (
-        id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu, fin_de_semana
-    )
-    SELECT id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu,
-        CASE 
-            WHEN DAYOFWEEK(data_activitat) IN (1, 7) THEN TRUE
-            ELSE FALSE
-        END AS fin_de_semana
-    FROM activitats_raw
-        WHERE DATE(data_activitat) = CURDATE() - INTERVAL 1 DAY;
+CREATE PROCEDURE exportar_control_carregues()
+BEGIN
+    SELECT * 
+    INTO OUTFILE '/ruta/on/guardar/control_carregues.csv'
+    FIELDS TERMINATED BY ';'
+    ENCLOSED BY '"'
+    LINES TERMINATED BY '\n'
+    FROM control_carregues;
 END $$
 
 DELIMITER ;
