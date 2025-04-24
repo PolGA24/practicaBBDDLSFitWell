@@ -1,5 +1,5 @@
 /*Pas 5*/
-/* Procedure */
+/* Procedure que detecti i afegeixi nous registres no existents a MD_activitat*/
 DELIMITER $$
 
 DROP PROCEDURE IF EXISTS afegir_registres$$
