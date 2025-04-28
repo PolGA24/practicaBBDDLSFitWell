@@ -19,4 +19,4 @@ INTO TABLE activitats_raw
 FIELDS TERMINATED BY ';'
 Lines TERMINATED BY '\n'
 IGNORE 1 LINES
-(id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu);  
+(id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu);

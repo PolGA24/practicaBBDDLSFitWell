@@ -10,9 +10,8 @@ CREATE PROCEDURE afegir_registres(
 BEGIN
     DECLARE vexisteix INT DEFAULT 0;
 
-    SELECT COUNT(*) INTO vexisteix
-    FROM MD_activitat
-    WHERE id_activitat = vid_activitat;
+    SELECT COUNT(*) INTO vexisteix FROM MD_activitat
+        WHERE id_activitat = vid_activitat;
 
     IF vexisteix = 0 THEN
         INSERT INTO MD_activitat (id_activitat, nom, descripcio)
@@ -28,7 +27,6 @@ DROP TRIGGER IF EXISTS trg_afegir_registres$$
 CREATE TRIGGER trg_afegir_registres
 AFTER INSERT ON activitats_net
 FOR EACH ROW
-
 BEGIN
     CALL afegir_registres(NEW.id_activitat, NEW.tipus_activitat);
 END $$
