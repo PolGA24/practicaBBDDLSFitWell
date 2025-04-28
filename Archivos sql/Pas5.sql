@@ -33,7 +33,6 @@ BEGIN
             INSERT INTO MD_activitat (id_activitat, nom, descripcio)
             VALUES (v_id_activitat, v_nom, v_descripcio);
         END IF;
-
     END LOOP activitats_loop;
     CLOSE c_activitats;
 END$$
