@@ -6,16 +6,16 @@ mitjançant CREATE USER.*/
 UPDATES i DELETES de activitats_raw a la base de dades de producció.*/
 
 
-/*Dona permisos a l’usuari l’usuari lsfit_user perquè a la base de dades lsfit de producció
+/*Dona permisos a l’usuari lsfit_user perquè a la base de dades lsfit de producció
 executi estructures, però no per crear-les. Pot també generar fitxers i fer SELECTS,
 INSERTS, UPDATES i DELETES.*/
 
 
-/*Dona permisos a l’usuari l’usuari lsfit_backup per llegir totes les taules de la base de
+/*Dona permisos a l’usuari lsfit_backup per llegir totes les taules de la base de
 dades lsfit i poder fer totes les operacions a la base de dades de backup, menys donar
 permisos a altres usuaris.*/
 
-/*Dona permisos a l’usuari l’usuari lsfit_auditor per veure totes les taules sense poder fer-
+/*Dona permisos a l’usuari lsfit_auditor per veure totes les taules sense poder fer-
 hi cap operació extra tant a la base de dades de producció com a la de backup.*/
 
 
