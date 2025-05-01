@@ -1,11 +1,16 @@
 /*Pas 6*/
 DROP TABLE IF EXISTS auditoria_activitats;
 CREATE TABLE auditoria_activitats (
-    id INT AUTO_INCREMENT PRIMARY KEY,     -- ID de la fila d'auditoria
-    id_activitat INT NOT NULL,             -- ID de l'activitat afegida a activitats_net
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    id_activitat INT NOT NULL,
     usuari VARCHAR(100) DEFAULT CURRENT_USER(),
     data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+
+ALTER TABLE auditoria_activitats
+ADD CONSTRAINT fk_aud_activitat
+FOREIGN KEY (id_activitat) REFERENCES activitats_net(id_activitat);
 
 
 DELIMITER $$
@@ -30,6 +35,11 @@ CREATE TABLE auditoria_md_activitat (
     usuari VARCHAR(100) DEFAULT CURRENT_USER(),
     data_hora DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+
+ALTER TABLE auditoria_md_activitat
+ADD CONSTRAINT fk_aud_md
+FOREIGN KEY (id_activitat) REFERENCES MD_activitat(id_activitat);
 
 
 DELIMITER $$
