@@ -12,9 +12,10 @@ CREATE TABLE control_carregues (
 /* Modificar el procedure de càrrega */
 DELIMITER $$
 DROP PROCEDURE IF EXISTS cargar_activitats_net$$
-CREATE PROCEDURE cargar_activitats_net(nom_fitxer VARCHAR(255))
+CREATE PROCEDURE cargar_activitats_net()
 BEGIN
     DECLARE num_files INT;
+    DECLARE nom_fitxer VARCHAR(255);
 
     INSERT INTO activitats_net (id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu, fin_de_semana)
     SELECT id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu,
@@ -25,6 +26,7 @@ BEGIN
     FROM activitats_raw;
 
     SET num_files = ROW_COUNT();
+    SET nom_fitxer = CONCAT('activitats_raw_', DATE_FORMAT(NOW(), '%Y%m%d_%H%i%s'), '.csv');
 
     INSERT INTO control_carregues (nom_fitxer, files_inserides) VALUES (nom_fitxer, num_files);
 END $$
@@ -35,7 +37,7 @@ DELIMITER $$
 DROP PROCEDURE IF EXISTS exportar_control_carregues$$
 CREATE PROCEDURE exportar_control_carregues()
 BEGIN
-    SELECT * INTO OUTFILE 'C:/Users/Xavier Fornes Bort/Documents/GitHub/practicaBBDDLSFitWell/Archivos cvs/control_carregues.csv'
+    SELECT * INTO OUTFILE 'C:/Users/Xavier Fornes Bort/Documents/GitHub/practicaBBDDLSFitWell/Archivos csv/control_carregues.csv'
     FIELDS TERMINATED BY ';'
     ENCLOSED BY '"'
     LINES TERMINATED BY '\n'

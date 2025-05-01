@@ -16,8 +16,8 @@ CREATE TABLE IF NOT EXISTS activitats_net (
 
 /* PROCEDEMIENTO PARA COPIAR LOS VALORES DE LA TABLA activitats_raw Y PEGARLO EN activitats_net ADEMAS DE LLENAR LA COLUMNA FIN DE SEMANA */
 DELIMITER $$
-DROP PROCEDURE IF EXISTS mover$$
-CREATE PROCEDURE mover()
+DROP PROCEDURE IF EXISTS cargar_activitats_net$$
+CREATE PROCEDURE cargar_activitats_net()
 BEGIN    
     INSERT INTO activitats_net (id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu, fin_de_semana)
     SELECT id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu,
@@ -35,6 +35,6 @@ DROP EVENT IF EXISTS activitat_moved$$
 CREATE EVENT activitat_moved
 ON SCHEDULE EVERY 1 DAY STARTS '2024-10-01 00:00:00' DO
 BEGIN
-    CALL mover();
+    CALL cargar_activitats_net();
 END $$
 DELIMITER ;
