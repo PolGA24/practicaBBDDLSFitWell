@@ -1,0 +1,19 @@
+PROMPT per als csvs:
+
+Es requereix la generació d’un fitxer en format CSV que contingui dades simulades d’activitats físiques registrades per usuaris. El fitxer ha d’incloure una fila per cada activitat i les següents columnes:
+
+id_usuari (enter): identificador numèric de l’usuari.
+
+data_activitat (format ISO: YYYY-MM-DD): data en què es realitza l’activitat.
+
+hora_inici (format 24 h: HH:MM): hora d’inici de l’activitat.
+
+durada_minuts (enter): durada de l’activitat en minuts.
+
+tipus_activitat (text): tipus d’activitat física, com ara caminar, córrer, bicicleta, natació, senderisme, etc.
+
+calories (enter): nombre estimat de calories cremades durant l’activitat.
+
+dispositiu (text): tipus de dispositiu utilitzat per registrar l’activitat (p. ex., smartwatch, mòbil, polsera).
+
+Es demanen dades fictícies però consistents i versemblants, amb una varietat d’usuaris, dates i tipus d’activitat. El volum recomanat és d’unes 50 a 100 entrades per a prova i anàlisi.
