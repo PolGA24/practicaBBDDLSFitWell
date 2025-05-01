@@ -53,3 +53,19 @@ BEGIN
     VALUES ('DELETE', OLD.id_activitat, OLD.nom, OLD.descripcio, CURRENT_USER(), NOW());
 END $$
 DELIMITER ;
+
+
+-- Per provar que aixo funciona, farem una prova amb un nou arxiu csv
+
+TRUNCATE TABLE activitats_raw;
+
+LOAD DATA INFILE 'C:/Users/Xavier Fornes Bort/Documents/GitHub/practicaBBDDLSFitWell/Archivos csv/activitats2.csv'
+INTO TABLE activitats_raw
+FIELDS TERMINATED BY ';'
+LINES TERMINATED BY '\n'
+IGNORE 1 LINES
+(id_usuari, data_activitat, hora_inici, durada_minuts, tipus_activitat, calories, dispositiu);
+
+CALL cargar_activitats_net();
+
+SELECT * FROM auditoria_activitats ORDER BY id DESC;
