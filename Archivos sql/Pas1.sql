@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS activitats_raw (
     PRIMARY KEY (id_activitat)
 );
 
-LOAD DATA INFILE 'C:/Users/Xavier Fornes Bort/Documents/GitHub/practicaBBDDLSFitWell/Archivos cvs/ListaActividades.csv'
+LOAD DATA INFILE 'C:/Users/Xavier Fornes Bort/Documents/GitHub/practicaBBDDLSFitWell/Archivos csv/ListaActividades.csv'
 INTO TABLE activitats_raw
 FIELDS TERMINATED BY ';'
 Lines TERMINATED BY '\n'
