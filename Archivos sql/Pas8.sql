@@ -1,11 +1,11 @@
 -- PAS 8: Creació d’usuaris i assignació de permisos
 
 -- Crear usuaris amb contrasenyes i host especificat
-CREATE USER 'lsfit_data_loader'@'localhost' IDENTIFIED BY 'password1';
-CREATE USER 'lsfit_user'@'localhost' IDENTIFIED BY 'password2';
-CREATE USER 'lsfit_backup'@'localhost' IDENTIFIED BY 'password3';
-CREATE USER 'lsfit_auditor'@'localhost' IDENTIFIED BY 'password4';
-CREATE USER 'lsfit_admin'@'localhost' IDENTIFIED BY 'password5';
+CREATE USER 'lsfit_data_loader'@'localhost' IDENTIFIED BY '1234';
+CREATE USER 'lsfit_user'@'localhost' IDENTIFIED BY '1234';
+CREATE USER 'lsfit_backup'@'localhost' IDENTIFIED BY '1234';
+CREATE USER 'lsfit_auditor'@'localhost' IDENTIFIED BY '1234';
+CREATE USER 'lsfit_admin'@'localhost' IDENTIFIED BY '1234';
 
 -- Permisos per a lsfit_data_loader
 GRANT SELECT, INSERT, UPDATE, DELETE ON lsfitwell.activitats_raw TO 'lsfit_data_loader'@'localhost';
